@@ -48,11 +48,11 @@ jobs:
       #- name: Create Namespace
        # run: kubectl create ns grafana
 
-      - name: change to namespace
-        run: kubens grafana 
+     # - name: change to namespace
+     #   run: kubens grafana 
 
       - name: Deploy Grafana
         run: |
-          helm repo add grafana https://grafana.github.io/helm-charts
+        #  helm repo add grafana https://grafana.github.io/helm-charts
           helm uninstall my-grafana
-          helm install my-grafana grafana/grafana --version 7.3.3
+        #  helm install my-grafana grafana/grafana --version 7.3.3
