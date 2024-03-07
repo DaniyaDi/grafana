@@ -44,6 +44,9 @@ jobs:
       - name: Create Namespace
         run: kubectl create ns grafana
 
+      - name: change to namespace
+        run: kubens grafana 
+
       - name: Deploy Grafana
         run: |
           helm repo add grafana https://grafana.github.io/helm-charts
