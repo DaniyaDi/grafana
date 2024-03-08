@@ -23,6 +23,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+      - name: Update kubeconfig
+        run: aws eks --region us-east-1 update-kubeconfig --name education-eks-UBc9ZA6Z
+
+
       - name: Install kubectl and kubens
         run: |
           curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -39,9 +43,7 @@ jobs:
           chmod +x get_helm.sh
           sudo ./get_helm.sh
 
-      - name: Update kubeconfig
-        run: aws eks --region us-east-1 update-kubeconfig --name education-eks-UBc9ZA6Z
-
+      
       - name: Verify kubeconfig
         run: kubectl get nodes
 
